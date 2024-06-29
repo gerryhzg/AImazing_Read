@@ -1,13 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[9]:
-
-
 pip install gtts
-
-
-# In[5]:
+pip install boto3
+pip install awscli
 
 
 from gtts import gTTS
@@ -51,20 +44,6 @@ if os.path.exists(file_path):
 else:
     print("Failed to save file")
 
-
-# In[5]:
-
-
-pip install boto3
-
-
-# In[3]:
-
-
-pip install awscli
-
-
-# In[7]:
 
 
 import boto3
@@ -127,14 +106,6 @@ except (BotoCoreError, ClientError) as error:
 # 
 # 5. Verify Permissions
 # Now that the policy has been attached to the IAM user, you can try running the AWS CLI command again to see if the permissions issue is resolved.
-
-# In[11]:
-
-
-pip install awscli
-
-
-# In[8]:
 
 
 import boto3

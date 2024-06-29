@@ -7,7 +7,7 @@ print('API is running on', url)
 print('\n\n')
 
 # Text to be summarized
-file_input = open("input.txt", 'r', encoding='UTF-8')
+file_input = open("D:\AImazing_Read\AI_end\summarize\input.txt", 'r', encoding='UTF-8')
 text_to_summarize = file_input.read()
 
 custom_prompt = 'give me 10 sentences to summarize the story. these 10 sentences are vivid and suitable as 10 promts to generate comics through Stable Diffusion'
@@ -28,3 +28,5 @@ if response.status_code == 200:
 else:
     error = response.json().get('error')
     print("Error:", error)
+    
+    
