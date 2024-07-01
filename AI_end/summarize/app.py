@@ -1,5 +1,4 @@
 from openai import OpenAI
-import requests
 from flask import Flask, request, jsonify
 import requests
 
@@ -7,6 +6,7 @@ app = Flask(__name__)
 
 api_file = open("api_key.txt", "r")
 api_key_str = api_file.read()
+
 client = OpenAI(api_key = api_key_str)
 
 def summarize_text(text, prompt, max_tokens=500):
@@ -48,4 +48,3 @@ def summarize():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    

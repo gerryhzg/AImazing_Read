@@ -1,4 +1,9 @@
 ------------
+2024/06/30
+add a function to read text files, including docx, pdf and txt
+clean up other functions
+
+------------
 2024/06/23
 initial push of the files for summarization:
 app.py: receive input from local API, send request to OpenAI to summarize the input text, and return summarization back to API

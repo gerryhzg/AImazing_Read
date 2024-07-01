@@ -1,4 +1,5 @@
-import requests
+import requests 
+from text_reader import read_document
 
 # URL of the locally running Flask server
 url = 'http://127.0.0.1:5000/summarize'
@@ -7,8 +8,8 @@ print('API is running on', url)
 print('\n\n')
 
 # Text to be summarized
-file_input = open("D:\AImazing_Read\AI_end\summarize\input.txt", 'r', encoding='UTF-8')
-text_to_summarize = file_input.read()
+file_input = "input.pdf"
+text_to_summarize = read_document(file_input)
 
 custom_prompt = 'give me 10 sentences to summarize the story. these 10 sentences are vivid and suitable as 10 promts to generate comics through Stable Diffusion'
 
@@ -28,5 +29,3 @@ if response.status_code == 200:
 else:
     error = response.json().get('error')
     print("Error:", error)
-    
-    
