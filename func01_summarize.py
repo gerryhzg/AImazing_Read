@@ -23,9 +23,9 @@ api_key_str = api_file.read()
 
 client = OpenAI(api_key = api_key_str)
 
-prompt = 'give me 10 sentences to summarize the story. these 10 sentences are vivid and suitable as 10 promts to generate comics through Stable Diffusion'
+prompt_preset = 'give me 10 sentences to summarize the story. these 10 sentences are vivid and suitable as 10 promts to generate comics through Stable Diffusion'
 
-def summarize_text(file_path, prompt, max_tokens=500):
+def summarize_text(file_path, prompt=prompt_preset, max_tokens=500):
     
     text = read_document(file_path)
     
@@ -94,12 +94,12 @@ def read_txt(file_path):
 @app.route('/summarize', methods=['POST'])
 def summarize():
     data = request.json
-    text = data.get('text', '')
-    prompt = data.get('prompt', 'Summarize the following text for kids:')
+    text = data.get('file_path', '')
+    prompt = data.get('prompt', prompt_preset)
     if not text:
         return jsonify({'error': 'No text provided'}), 400
     
-    summary = summarize_text(text, prompt)
+    summary = summarize_text(file_path, prompt)
 
     # # Send summarized text to another API
     # another_api_url = 'https://example.com/receive_summary'

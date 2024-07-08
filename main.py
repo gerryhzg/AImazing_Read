@@ -15,8 +15,33 @@ import func02_generate_image as image
 import func03_generate_music as music
 import func04_generate_voice as voice
 
+
+
+
 # generate summarization
 
+import requests 
+
+# URL of the locally running Flask server
+url = 'http://127.0.0.1:5000/summarize'
+
+# Full path to the input file
+file_input = "input.pdf"
+
+# Prompt
+custom_prompt = 'give me 10 sentences to summarize the story. these 10 sentences are vivid and suitable as 10 promts to generate comics through Stable Diffusion'
+
+# Make a POST request to the Flask server
+response = requests.post(url, json={'file_path': file_input, 'prompt': custom_prompt})
+
+
+# Print the response from the server
+if response.status_code == 200:
+    summary = response.json().get('summary')
+    print("Summary:\n", summary)
+else:
+    error = response.json().get('error')
+    print("Error:", error)
 
 
 
