@@ -18,16 +18,15 @@ import re
 
 app = Flask(__name__)
 
-api_file = open("api_key.txt", "r")
-api_key_str = api_file.read()
-
-client = OpenAI(api_key = api_key_str)
-
 prompt_preset = 'give me 10 sentences to summarize the story. these 10 sentences are vivid and suitable as 10 promts to generate comics through Stable Diffusion'
 
 def summarize_text(file_path, prompt=prompt_preset, max_tokens=500):
     
     text = read_document(file_path)
+
+    api_file = open("api_key.txt", "r")
+    api_key_str = api_file.read()
+    client = OpenAI(api_key = api_key_str)
     
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
