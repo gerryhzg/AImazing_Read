@@ -28,7 +28,7 @@ custom_prompt = 'give me 10 sentences to summarize the story. these 10 sentences
 
 summary = summ.summarize_text(file_input, custom_prompt)
 
-
+summary = generate_sumary(input1, input2)
 
 
 # generate images
@@ -55,16 +55,16 @@ images = image.generage_image_dalle(summary, api_key_file)
 
 
 # generate music
-
+musics = generate_music(summary, inputs)
 
 
 # generate voice
 
-
+voices = generate_voice(summary, inputs)
 
 # combine multimedia 
 
-
+final_product = combine(images[0], summary, musics, voices)
 
 
 

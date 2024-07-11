@@ -20,11 +20,11 @@ app = Flask(__name__)
 
 prompt_preset = 'give me 10 sentences to summarize the story. these 10 sentences are vivid and suitable as 10 promts to generate comics through Stable Diffusion'
 
-def summarize_text(file_path, prompt=prompt_preset, max_tokens=500):
+def summarize_text(file_path, prompt=prompt_preset, api_key = "chatgpt_api_key.txt", max_tokens=500):
     
     text = read_document(file_path)
 
-    api_file = open("api_key.txt", "r")
+    api_file = open(api_key, "r")
     api_key_str = api_file.read()
     client = OpenAI(api_key = api_key_str)
     
@@ -98,7 +98,7 @@ def summarize():
     if not text:
         return jsonify({'error': 'No text provided'}), 400
     
-    summary = summarize_text(file_path, prompt)
+    summary = summarize_text(file_path, prompt=prompt_preset, api_key = "chatgpt_api_key.txt", max_tokens=500)
 
     # # Send summarized text to another API
     # another_api_url = 'https://example.com/receive_summary'
