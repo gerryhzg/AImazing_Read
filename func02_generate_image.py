@@ -41,25 +41,36 @@ def generate_1_image_dalle(prompt):
     return img
 
 
-def sav_img(img, filename):
-    img.save(filename) 
-    return
-    
-
-def generage_image_dalle(summary, api_key_file):
+def generate_1_image_dalle_new(prompt, api_key_file):
+    from openai import OpenAI
     f = open(api_key_file, "r")
     api_key = f.read()
-    openai.api_key = api_key
+    
+    client = OpenAI(api_key = api_key)
+    
+    response = client.images.generate(
+                                      model="dall-e-3",
+                                      prompt=prompt,
+                                      size="1024x1024",
+                                      quality="standard",
+                                      n=1,
+                                    )
+    image_url = response.data[0].url
+    image_response = requests.get(image_url) 
+    img = PILImage.open(BytesIO(image_response.content)).convert('RGBA') 
+    return img
+
+
+def generage_image_dalle(summary, api_key_file):
+    
     
     images = {}
-    for i, paragraph in enumerate(summary, start=1):
+    for i in range(1, len(summary) + 1):
+        paragraph = summary[i]
         prompt = translate_to_prompt(paragraph)
-        images[i] = generate_1_image_dalle(prompt)
+        images[i] = generate_1_image_dalle_new(prompt, api_key_file)
         filename = f"generated_image_{i}.png" 
         images[i].save(filename)
-        display(PILImage.open(filename))
-        
     return images
     
-    
-    
+
