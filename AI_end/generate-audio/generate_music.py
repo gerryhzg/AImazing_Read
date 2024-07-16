@@ -2,18 +2,12 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 6,
    "id": "c6d49bfc-c2e9-4270-92c8-6d0b07bda999",
-   "metadata": {},
+   "metadata": {
+    "scrolled": false
+   },
    "outputs": [
-    {
-     "name": "stderr",
-     "output_type": "stream",
-     "text": [
-      "C:\\Users\\yukaw\\anaconda3\\Lib\\site-packages\\pydub\\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\n",
-      "  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)\n"
-     ]
-    },
     {
      "ename": "ModuleNotFoundError",
      "evalue": "No module named 'simpleaudio'",
@@ -21,7 +15,7 @@
      "traceback": [
       "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
       "\u001b[1;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)",
-      "Cell \u001b[1;32mIn[1], line 20\u001b[0m\n\u001b[0;32m     17\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m \u001b[38;5;21;01mtime\u001b[39;00m\n\u001b[0;32m     19\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m \u001b[38;5;21;01mpydub\u001b[39;00m \u001b[38;5;28;01mimport\u001b[39;00m AudioSegment\n\u001b[1;32m---> 20\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m \u001b[38;5;21;01msimpleaudio\u001b[39;00m \u001b[38;5;28;01mas\u001b[39;00m \u001b[38;5;21;01msa\u001b[39;00m\n\u001b[0;32m     22\u001b[0m \u001b[38;5;66;03m# ===Function to analyze summary and generate sentiment\u001b[39;00m\n\u001b[0;32m     23\u001b[0m \u001b[38;5;66;03m#\u001b[39;00m\n\u001b[0;32m     24\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mget_sentiment\u001b[39m(text):\n",
+      "Cell \u001b[1;32mIn[6], line 20\u001b[0m\n\u001b[0;32m     17\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m \u001b[38;5;21;01mtime\u001b[39;00m\n\u001b[0;32m     19\u001b[0m \u001b[38;5;28;01mfrom\u001b[39;00m \u001b[38;5;21;01mpydub\u001b[39;00m \u001b[38;5;28;01mimport\u001b[39;00m AudioSegment\n\u001b[1;32m---> 20\u001b[0m \u001b[38;5;28;01mimport\u001b[39;00m \u001b[38;5;21;01msimpleaudio\u001b[39;00m \u001b[38;5;28;01mas\u001b[39;00m \u001b[38;5;21;01msa\u001b[39;00m\n\u001b[0;32m     22\u001b[0m \u001b[38;5;66;03m# ===Function to analyze summary and generate sentiment\u001b[39;00m\n\u001b[0;32m     23\u001b[0m \u001b[38;5;66;03m#\u001b[39;00m\n\u001b[0;32m     24\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mget_sentiment\u001b[39m(text):\n",
       "\u001b[1;31mModuleNotFoundError\u001b[0m: No module named 'simpleaudio'"
      ]
     }
@@ -38,8 +32,8 @@
     "#\n",
     "#\n",
     "# Installation of libarary============================================\n",
-    "# !pip install simpleaudio  \n",
-    "# !pip install vaderSentiment\n",
+    "#!pip install simpleaudio  \n",
+    "#!pip install vaderSentiment\n",
     "#!pip install pydub\n",
     "#=====================================================================\n",
     "from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer\n",
@@ -80,12 +74,12 @@
     "\n",
     "    return bgm\n",
     "    \n",
-    "#if __name__ == '__main__':\n",
-    "#      summary_text = input(\"Enter text to analyze sentiment: \")\n",
-    "#\n",
+    "if __name__ == '__main__':\n",
+    "      summary_text = input(\"Enter text to analyze sentiment: \")\n",
+    "\n",
     "##    print(f\"Playing {bgm} for sentiment: {sentiment['compound']}\")\n",
-    "#      bgm=generate_bgm(summary_text)\n",
-    "#      play_mp3(bgm)\n",
+    "      bgm=generate_bgm(summary_text)\n",
+    "      play_mp3(bgm)\n",
     "    "
    ]
   },
