@@ -14,6 +14,7 @@ import func01_summarize as summ
 import func02_generate_image as image
 import func03_generate_music as music
 import func04_generate_voice as voice
+import func05_generate_final_product as result
 
 
 # Global Input - a user-specified document
@@ -56,7 +57,7 @@ voices = voice.generate_voice(summary, other inputs)
 # Task is to combine all 4 elements (summary, image, bgm, voice) by aligning the keys of each Py dictionary.
 # e.g. The first page of our final product consist of summary[1], images[1], bgms[1] and voices[1].
 # maybe this step can be done in the GUI?
-final_product = combine(images[0], summary, musics, voices)
+final_product = result.combine(images, summary, bgms, voices)
 
 
 
