@@ -95,3 +95,12 @@ def generate_illustration_endpoint():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+#####sample curl
+# curl -X POST http://127.0.0.1:5000/api/generate-illustration \
+# -H "Content-Type: application/json" \
+# -d @- << 'EOF'
+# {
+#   "text": "Peppa Pig and the Secret Ingredient Adventure\nPeppa: \"Hello, everyone! Today, we have a fun story about something very interesting. Do you know what tumors are? They're tiny little things that can grow inside our bodies, and they need a special ingredient to grow, just like how our cakes need sugar to be sweet!\"\nGeorge: \"Ooh, what's the special ingredient, Peppa?\"\nPeppa: \"It's called acetate! Imagine you're making a magic potion, and acetate is the magic dust that makes it work. Tumors use this acetate to grow bigger and stronger.\"\nGeorge: \"Wow, that's interesting! But how do they get this magic dust?\"\nPeppa: \"Great question, George! Scientists found out that there's a little helper called ACSS2. This helper is like a tiny worker that grabs the acetate from our food and gives it to the tumors.\"\nGeorge: \"And what did the scientists do next?\"\nPeppa: \"They did a clever experiment with mice! They took away the ACSS2 helper from the mice. Guess what happened? The tumors couldn't get their special ingredient and stayed small!\"\nGeorge: \"That's great news, Peppa! What does it mean for us?\"\nPeppa: \"It means scientists can make medicines to block the ACSS2 helper. It's like finding a way to stop the magic potion from working, so the tumors can't grow anymore. Isn't that cool?\"\nGeorge: \"That's amazing, Peppa! Scientists are like real-life superheroes!\"\nPeppa: \"They sure are, George! And that's our fun story for today, everyone. Remember, science can do wonderful things!\"\nGeorge: \"Bye-bye, everyone!\"\nPeppa and George: \"Oink, oink!\""
+# }
+# EOF
