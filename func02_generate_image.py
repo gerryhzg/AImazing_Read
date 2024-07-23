@@ -44,7 +44,8 @@ def clear_folder(folder_path):
 
 def translate_to_prompt(paragraph):
     # place holder
-    prompt = paragraph
+    prompt = f"Generate an illustration featuring Peppa Pig and George, in the style of the Peppa Pig cartoon and based on the following text:\n\n{paragraph}"
+    
     return prompt
 
 # 定义函数来调用 DALL-E API 并显示生成的图像
@@ -85,7 +86,7 @@ def generage_image_dalle(summary, api_key_file):
         paragraph = summary[i]
         prompt = translate_to_prompt(paragraph)
         images[i] = generate_1_image_dalle_new(prompt, api_key_file)
-        # filename = f"generated_image_{i}.png"
+
         filename = os.path.join(TARGET_DIR, f"generated_image_{i}.png") 
         images[i].save(filename)
     return images
