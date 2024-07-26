@@ -44,7 +44,9 @@ images = image.generage_image_dalle(summary, dalle_api_key_file)
 # Output: 'bgms' - a Python dictionary
 # Description: Each value of 'bgms' is the background music associated with each page of the final product.
 #              indexed by numbers starting from 1.
-bgms = music.generate_bgm(summary, ohter inputs)
+summary = {1: "Peppa Pig and the Secret Ingredient Adventure", 2: "Peppa: \"Hello, everyone! Today, we have a fun story about something very interesting. Do you know what tumors are? They're tiny little things that can grow inside our bodies, and they need a special ingredient to grow, just like how our cakes need sugar to be sweet!\"", 3: "George: \"Ooh, what's the special ingredient, Peppa?\"", 4: "Peppa: \"It's called acetate! Imagine you're making a magic potion, and acetate is the magic dust that makes it work. Tumors use this acetate to grow bigger and stronger.\"", 5: "George: \"Wow, that's interesting! But how do they get this magic dust?\"", 6: "Peppa: \"Great question, George! Scientists found out that there's a little helper called ACSS2. This helper is like a tiny worker that grabs the acetate from our food and gives it to the tumors.\"", 7: "George: \"And what did the scientists do next?\"", 8: "Peppa: \"They did a clever experiment with mice! They took away the ACSS2 helper from the mice. Guess what happened? The tumors couldn't get their special ingredient and stayed small!\"", 9: "George: \"That's great news, Peppa! What does it mean for us?\"", 10: "Peppa: \"It means scientists can make medicines to block the ACSS2 helper. It's like finding a way to stop the magic potion from working, so the tumors can't grow anymore. Isn't that cool?\"", 11: "George: \"That's amazing, Peppa! Scientists are like real-life superheroes!\"", 12: "Peppa: \"They sure are, George! And that's our fun story for today, everyone. Remember, science can do wonderful things!\"", 13: "George: \"Bye-bye, everyone!\"", 14: "Peppa and George: \"Oink, oink!\""} 
+dalle_api_key_file = 'dalle_api_key.txt'
+bgms = music.generate_bgm(summary, dalle_api_key_file)
 
 
 # Module 4 - Text to Speech
