@@ -1,0 +1,67 @@
+.InputPart_Main_Div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 30px;
+    animation: Right-in 2s;
+}
+
+.InputPart_Main_Div textarea{
+    width: 60%;
+    min-height: 50vh;
+    max-height: auto;
+    border-radius: 20px;
+    /* background-color: rgba(229, 144, 78, 0.801); */
+    border: 2px solid rgb(241, 100, 34);
+    color: rgb(24, 24, 24);
+    font-family: "Teko", sans-serif;
+    font-size: xx-large;
+    padding: 15px;
+    /* border: 4px solid white; */
+}
+
+
+.InputPart_Main_Div label{
+    font-size: 40px;
+    font-weight: 600;
+    font-family: "Teko", sans-serif;
+    color: rgb(241, 100, 34);
+}
+
+.InputPart_Main_Div button{
+    transition: 0.2s;
+    font-size: 40px;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.59);
+    border: 2px solid rgb(241, 100, 34);
+    color: rgb(241, 100, 34);
+    font-family: "Teko", sans-serif;
+    width: 18%;
+}
+.InputPart_Main_Div button:hover{
+    transition: 0.2s;
+    background-color: rgba(255, 95, 27, 0.842);
+    border-radius: 20px;
+}
+
+.InputPart_Main_Div .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.InputPart_Main_Div .row .upload_file{
+    font-size: xx-large;
+    border: 2px solid rgb(241, 100, 34);
+    padding: 5px 20px;
+    border-radius: 10px;
+    
+}
+

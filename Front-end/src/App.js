@@ -1,23 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Example from './Conponents/Example';
+import InputPart from './Conponents/InputPart';
+import OutputPart from './Conponents/OutputPart';
 
 function App() {
+
+  const [DisplayState,SetDisplayState] = useState("Input")
+
+  const [DataResult,SetDataResult] = useState(
+    {
+      Video:"",
+      Images:[],
+      Content:[],
+      Voices:[],
+      Bgm:""
+    }
+  )
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App_Main_Div">      
+
+      { DisplayState === "Input" &&<>
+          <div className='Logo_Div'>
+          <label>Almazing Read</label>
+          <p>AI Turn difficult article in to simple Story for kids!</p>
+        </div>
+        <Example/>
+      </> }
+
+      {
+        DisplayState === "Input" ?( <InputPart SetDataResult={SetDataResult} DataResult={DataResult} Done={()=>{SetDisplayState("Output")}}/> ):( <OutputPart DataResult={DataResults}/> )
+      }
+
     </div>
   );
 }
