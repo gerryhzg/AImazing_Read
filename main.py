@@ -37,8 +37,14 @@ def main():
     # Output: 'summary' - a Python dictionary
     # Description: Each value of 'summary' is the text on each page of the final product.
     #              indexed by numbers starting from 1.
+    #chatgpt_api_key_file = "chatgpt_api_key.txt"
+    #summary = summ.summarize_text(Content, api_key = chatgpt_api_key_file , max_tokens=500, model="gpt-3.5-turbo")
+    
+    
     chatgpt_api_key_file = "chatgpt_api_key.txt"
-    summary = summ.summarize_text(Content, api_key = chatgpt_api_key_file , max_tokens=500, model="gpt-3.5-turbo")
+    summary=paper_text_to_conversation(Content,chatgpt_api_key_file)
+    # summary is a dict containing sentences of conversation between daddy pyg and peppa
+    
 
     # Module 2 - Generate images
     # Input: 'summary'
