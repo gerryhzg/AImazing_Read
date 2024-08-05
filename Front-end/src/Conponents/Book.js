@@ -1,37 +1,53 @@
 import React,{useState} from 'react'
 import "./Book.css"
-export default function Book() {
-    const [BooksData,SetBooksData] = useState([
-        {
-            PageImage:"1.png",
-            Content:"A transformer is a deep learning architecture developed by Google and based on the multi-head attention mechanism, proposed in a 2017 paper 'Attention Is All You Need'."
-        },
-        {
-            PageImage:"2.png",
-            Content:"A transformer is a deep learning architecture developed by Google and based on the multi-head attention mechanism, proposed in a 2017 paper 'Attention Is All You Need'."
-        }
-    ])
+export default function Book({DataResult}) {
+    
 
-    const [CurrentPage,SetCurrentPage] = useState(0)
+    let CurrentPage = 0
+
+    const [CurrentImage,SetCurrentImage] = useState(DataResult["Images"][0])
+
+    const [CurrentContent,SetCurrentContent] = useState(DataResult["Content"][0])
+
+    const [CurrentVoice,SetCurrentVoice] = useState(DataResult["Voices"][0])
+
+    function NextPage(){
+        if ( CurrentPage < DataResult["Images"].length ){
+            CurrentPage += 1
+            SetCurrentImage(DataResult["Images"][CurrentPage])
+            SetCurrentContent(DataResult["Content"][CurrentPage])
+            SetCurrentVoice(DataResult["Voices"][CurrentPage])
+        }
+    }
+
+    function BackPage(){
+        if ( CurrentPage > 0 ){
+            CurrentPage -= 1
+            SetCurrentImage(DataResult["Images"][CurrentPage])
+            SetCurrentContent(DataResult["Content"][CurrentPage])
+            SetCurrentVoice(DataResult["Voices"][CurrentPage])
+        }
+    }
+
 
   return (
     <div className='Book_Main_Div'>
 
         <div className='Content_Div'>
             {
-                BooksData[CurrentPage] && 
-                <img src={require(`../Media/${BooksData[CurrentPage].PageImage}`)} />
+                CurrentImage && 
+                <img src={CurrentImage} />
             }
             <div className='Text_Content'>
                 <p>
-                    {BooksData[CurrentPage].Content}
+                    {CurrentContent}
                 </p>
             </div>
         </div>
 
         <div className='Control_Div'>
-            <button>Back</button>
-            <button>Next Page</button>
+            <button onClick={BackPage}>Back</button>
+            <button onClick={NextPage}>Next Page</button>
         </div>
 
     </div>

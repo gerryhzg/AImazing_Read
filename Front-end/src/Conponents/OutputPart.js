@@ -15,7 +15,7 @@ export default function OutputPart({DataResult}) {
 
       <div className='Display_Div'>
         {
-          OutputType === "Book" ? (<Book/>) : (<Animate/>)
+          OutputType === "Book" ? (<Book DataResult={DataResult}/>) : (<Animate/>)
         }
       </div>
 

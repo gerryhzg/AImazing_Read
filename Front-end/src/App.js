@@ -30,7 +30,7 @@ function App() {
       </> }
 
       {
-        DisplayState === "Input" ?( <InputPart SetDataResult={SetDataResult} DataResult={DataResult} Done={()=>{SetDisplayState("Output")}}/> ):( <OutputPart DataResult={DataResults}/> )
+        DisplayState === "Input" ?( <InputPart SetDataResult={SetDataResult} DataResult={DataResult} Done={()=>{SetDisplayState("Output")}}/> ):( <OutputPart DataResult={DataResult}/> )
       }
 
     </div>
