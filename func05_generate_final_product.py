@@ -43,6 +43,29 @@ def GetVoiceFiles():
 
     return image_files
 
+def GetImageUrls():
+    # Specify the folder path
+    folder_path = "./AI_end/Media/Images"
+
+    # Get all files in the folder
+    files = os.listdir(folder_path)
+
+    # Filter only image files
+    image_files = ["http://localhost:5000/"+file for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
+
+    return image_files
+
+def GetVoiceUrls():
+    # Specify the folder path
+    folder_path = "./AI_end/Media/Images"
+
+    # Get all files in the folder
+    files = os.listdir(folder_path)
+
+    # Filter only image files
+    image_files = ["http://localhost:5000/"+file for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
+
+    return image_files
 
 def Combine( summary:list[str]):
 
@@ -89,10 +112,6 @@ def Combine( summary:list[str]):
     final_video = video.set_audio(combined_bgm)
 
     # Export the final video
-    final_video.write_videofile("output_video.mp4", codec='libx264', fps=24)
+    final_video.write_videofile("./AI_end/Media/Video/output_video.mp4", codec='libx264', fps=24)
 
-    return {"VideoPath":"output_video.mp4","ImagePaths":image_files,"Voices":voice_files,"Summary":summary}
-
-def display():
-
-    pass
+    return "http://localhost:5000/AI_end/Media/Video/output_video.mp4"

@@ -3,6 +3,7 @@ import "./InputPart.css"
 import axios from 'axios'
 import { AiOutlineLoading } from 'react-icons/ai'
 
+
 export default function InputPart({Done,DataResult,SetDataResult}) {
 
   const [FileText,SetFileText] = useState("")

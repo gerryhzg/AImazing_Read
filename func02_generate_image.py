@@ -30,6 +30,7 @@ import requests
 from PIL import Image as PILImage
 from io import BytesIO
 import os
+import shutil
 
 # Ensure the target directory exists
 TARGET_DIR = "./AI_end/Media/Images"
