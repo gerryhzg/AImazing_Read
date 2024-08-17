@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+modified
+@author: Gerry Huang
+"""
+"""
 Created on Sun Jun 30 11:58:55 2024
 
 @author: luyang
@@ -26,6 +30,7 @@ import requests
 from PIL import Image as PILImage
 from io import BytesIO
 import os
+import shutil
 
 # Ensure the target directory exists
 TARGET_DIR = "./AI_end/Media/Images"
@@ -44,9 +49,14 @@ def clear_folder(folder_path):
 
 def translate_to_prompt(paragraph):
     # place holder
-    prompt = f"Generate an illustration featuring Peppa Pig and George, in the style of the Peppa Pig cartoon and based on the following text:\n\n{paragraph}"
-    
-    return prompt
+    # prompt = f"Generate an illustration featuring Daddy Pig and Peppa Pig, in the style of the Peppa Pig cartoon and based on the following text:\n\n{paragraph}"
+    prompt = (
+        "Create an illustration featuring Daddy Pig and Peppa Pig from the Peppa Pig cartoon. "
+        "Ensure that Daddy Pig and Peppa Pig look exactly as they do in the show, with consistent colors, shapes, and proportions. "
+        "The style should match the original Peppa Pig cartoon, with bright colors, simple shapes, and a playful, child-friendly atmosphere. "
+        "Based on the following scenario: {paragraph}"
+    ) 
+    return prompt.format(paragraph=paragraph)
 
 # 定义函数来调用 DALL-E API 并显示生成的图像
 # def generate_1_image_dalle(prompt):

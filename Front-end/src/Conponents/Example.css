@@ -1,0 +1,162 @@
+.Example_Main_Div{
+    width:100% ;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    animation: Left-in 2s;
+    background-color: rgb(90, 158, 192);
+}
+
+.Example_Main_Div .Card_Div{
+    width: 20vw;
+    height: 20vw;
+    background-color: rgb(236, 147, 45);
+    background-color: rgb(73, 194, 241);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* .Example_Main_Div .bc1{
+    background-color: rgb(222, 243, 37);
+}
+
+.Example_Main_Div .bc2{
+    background-color: rgb(243, 236, 37);
+}
+
+.Example_Main_Div .bc3{
+    background-color: rgb(243, 191, 37);
+} */
+
+
+.Example_Main_Div .Card_Div .title{
+    font-size: xx-large;
+    font-family: "Teko", sans-serif;
+    color: white;
+}
+
+.Example_Main_Div .Card_Div .FakeInput_Div{
+    width: 85%;
+    height: 70%;
+    background-color: rgb(254, 249, 249);
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.Example_Main_Div .Card_Div .FakeInput_Div label{
+  font-size: small;
+    padding-left: 10px;
+    width: 90%;
+    letter-spacing: .1em; 
+}
+
+.Example_Main_Div .Card_Div .FakeInput_Div p {
+    padding: 10px;
+    width: 90%;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .1em; 
+    animation: 
+      typing 4.5s steps(40, end) infinite,
+      blink-caret .75s step-end infinite;
+}
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 90% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+
+.Example_Main_Div .Card_Div .row_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid black;
+}
+
+.Example_Main_Div .Card_Div .row_div .colomn_div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.Example_Main_Div .Card_Div .row_div .colomn_div label{
+    font-family: "Teko", sans-serif;
+    font-size: xx-large;
+    /* height: 30px; */
+}
+
+.Example_Main_Div .Card_Div .row_div .icon{
+    font-size: 120px;
+    animation: rotate360 7s linear infinite;
+}
+
+.Example_Main_Div .Card_Div .detail{
+    font-family: "Teko", sans-serif;
+    font-size: xx-large;
+}
+
+@keyframes rotate360 {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+.Example_Main_Div .Card_Div .image_div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.Example_Main_Div .Card_Div .image_div img{
+    width: 7.5vw;
+    height: auto;
+    border-radius: 10px;
+    animation: rotate30 1s linear infinite;
+}
+
+@keyframes rotate30 {
+    0% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+    100% {
+        transform: rotate(-3deg);
+      }
+  }
+
+@keyframes Left-in{
+  from{padding-right: 100%;}
+  to{padding-right: 0;}
+}
+
+@keyframes Right-in{
+  from{padding-left: 100%;}
+  to{padding-left: 0;}
+}

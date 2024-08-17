@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from moviepy.editor import VideoFileClip, ImageSequenceClip, AudioFileClip, TextClip
+from moviepy.editor import *
 import wave
 
 import os 
@@ -15,21 +15,73 @@ def get_duration_wave(file_path):
     
     return float(f"{duration:.2f}")
 
-def combine(images , summary, bgms:list[str], voice):
-
-    pass
-
 def combineAudios(bgms:list[str], voices:list[str]):
 
     return
 
-def Video( images:list[str] , summary:list[str], bgms:list[str], voices:list[str] ):
+def GetImageFiles():
+    # Specify the folder path
+    folder_path = "./AI_end/Media/Images"
+
+    # Get all files in the folder
+    files = os.listdir(folder_path)
+
+    # Filter only image files
+    image_files = [file for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
+
+    return image_files
+
+def GetVoiceFiles():
+    # Specify the folder path
+    folder_path = "./AI_end/Media/Images"
+
+    # Get all files in the folder
+    files = os.listdir(folder_path)
+
+    # Filter only image files
+    image_files = [file for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
+
+    return image_files
+
+def GetImageUrls():
+    # Specify the folder path
+    folder_path = "./AI_end/Media/Images"
+
+    # Get all files in the folder
+    files = os.listdir(folder_path)
+
+    # Filter only image files
+    image_files = ["http://localhost:5000/"+file for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
+
+    return image_files
+
+def GetVoiceUrls():
+    # Specify the folder path
+    folder_path = "./AI_end/Media/Images"
+
+    # Get all files in the folder
+    files = os.listdir(folder_path)
+
+    # Filter only image files
+    image_files = ["http://localhost:5000/"+file for file in files if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
+
+    return image_files
+
+def Combine( summary:list[str]):
+
+    image_files = GetImageFiles()
+
+    voice_files = GetVoiceFiles()
+
+    bgm_file = "./AI_end/Media/BackgroundMusic/bgm.mp3"
+
+    Full_Voice_Audio = 0
 
     VideoLength = 0
 
     VoicesLength = []
 
-    for voice in voices:
+    for voice in voice_files:
 
         TimeLength = get_duration_wave(voice)
 
@@ -37,44 +89,29 @@ def Video( images:list[str] , summary:list[str], bgms:list[str], voices:list[str
 
         VoicesLength.append()
 
-    FirstFrame = cv2.imread(images[0])
+            # List of image file paths
 
-    VideoWidth , VideoHeight = FirstFrame.shape[1],FirstFrame.shape[0]
+    # Load images with durations
+    clips = [ ]  # Set the duration for each image in seconds
+    for index,image in enumerate(image_files):
+        clips.append(ImageClip(image).set_duration(VoicesLength[index]))
 
-    # Create a video writer
-    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    video = cv2.VideoWriter('output_video.mp4', fourcc, 30.0, (image.shape[1], image.shape[0]))
+    # Concatenate clips to create video
+    video = concatenate_videoclips(clips)
 
-    for Index,ImagePath in enumerate(images):
+    # Load background music
+    bgm_clip = AudioFileClip("./AI_end/Media/BackgroundMusic/happy.mp3").volumex(0.5) 
+    voice_clip  = AudioFileClip("clip.mp3")
+        # Set the audio duration to match the video duration
+    bgm_clip = bgm_clip.set_duration(video.duration)
+    voice_clip = voice_clip.set_duration(video.duration)
 
-        # Load the image
-        image = cv2.imread(ImagePath)
+    combined_bgm = CompositeAudioClip([bgm_file,voice_clip])
 
-        image = cv2.resize(image,(VideoWidth,VideoHeight))
+    # Combine video with subtitles and background music
+    final_video = video.set_audio(combined_bgm)
 
-        # Create a 30-second video
-        for i in range( (VoicesLength[Index]+2) * 30 ):
-            video.write(image)
+    # Export the final video
+    final_video.write_videofile("./AI_end/Media/Video/output_video.mp4", codec='libx264', fps=24)
 
-    # Release the video writer
-    video.release()
-
-    # Load the audio file
-    audio = AudioFileClip(bgms[0])
-
-    # Create the subtitle text
-    subtitle_text = "This is a 30-second video with subtitles."
-    subtitle = TextClip(subtitle_text, fontsize=36, color='white')
-    subtitle = subtitle.set_position(('center', 'bottom')).set_duration(30).set_start(3)
-
-    # Create the final video clip
-    final_clip = ImageSequenceClip([image] * (30 * 30), fps=30)
-    final_clip = final_clip.set_audio(audio)
-    final_clip = final_clip.set_subtitle(subtitle)
-
-    # Write the final video to a file
-    final_clip.write_videofile('output_video_with_audio_and_subtitles.mp4')
-
-def display():
-
-    pass
+    return "http://localhost:5000/AI_end/Media/Video/output_video.mp4"
