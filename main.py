@@ -11,7 +11,7 @@ edited by: Gerry Huang
 import os
 
 # import all functions
-import func01_summarize as summ
+from func01_summarize import paper_text_to_conversation
 import func02_generate_image as image
 import func03_generate_music as music
 import func04_generate_voice as voice
@@ -38,8 +38,9 @@ def main():
     # Output: 'summary' - a Python dictionary
     # Description: Each value of 'summary' is the text on each page of the final product.
     #              indexed by numbers starting from 1.
+
     chatgpt_api_key_file = "chatgpt_api_key.txt"
-    summary = summ.summarize_text(Content, api_key = chatgpt_api_key_file , max_tokens=500, model="gpt-3.5-turbo")
+    summary=paper_text_to_conversation(Content,chatgpt_api_key_file)
 
     # Module 2 - Generate images
     # Input: 'summary'
