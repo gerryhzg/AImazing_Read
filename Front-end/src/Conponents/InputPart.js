@@ -43,7 +43,8 @@ export default function InputPart({Done,DataResult,SetDataResult}) {
   }
 
   return (
-    <div className='InputPart_Main_Div'>
+    <div className='InputPart_Main_Div' >
+      <div className='cloumn'>
       <div className='row'>
         <label>Input Your Article</label>
         <input type='file' id='file-upload' onChange={handleFileChange} style={{display:'none'}}/>
@@ -58,6 +59,8 @@ export default function InputPart({Done,DataResult,SetDataResult}) {
         <AiOutlineLoading className='icon'/>
         <label>Generating...</label>
         </div>}
+      </div>
+      
     </div>
   )
 }
