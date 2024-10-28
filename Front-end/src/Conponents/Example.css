@@ -12,7 +12,7 @@
 
 .Example_Main_Div .Card_Div{
     width: 20vw;
-    height: 20vw;
+    height: 16vw;
     background-color: rgb(236, 147, 45);
     background-color: rgb(73, 194, 241);
     border-radius: 20px;
@@ -133,7 +133,7 @@
 }
 
 .Example_Main_Div .Card_Div .image_div img{
-    width: 7.5vw;
+    width: 6.5vw;
     height: auto;
     border-radius: 10px;
     animation: rotate30 1s linear infinite;

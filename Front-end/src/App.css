@@ -1,33 +1,38 @@
 .App_Main_Div {
   width: 100%;
-  /* height: 100%; */
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   position: absolute;
+  overflow: hidden;
   top: 0;
   left: 0;
   /* padding-top: 10px; */
-  padding-bottom: 20px;
-  gap: 10px;
+  /* padding-bottom: 20px; */
+  /* gap: 10px; */
 }
 .App_Main_Div .Logo_Div{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* min-height: 170px; */
 }
 .App_Main_Div .Logo_Div label{
   font-family: "Teko", sans-serif;
   font-size: 60px;
   font-weight: 700;
   color: rgb(241, 100, 34);
-  height: 25%;
+  height: 20%;
 }
 
 .App_Main_Div .Logo_Div p{
-  margin-top: -20px;
+  /* margin-top: -20px; */
   font-family: "Teko", sans-serif;
   font-size: x-large;
 }

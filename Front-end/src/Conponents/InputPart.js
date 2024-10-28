@@ -3,6 +3,7 @@ import "./InputPart.css"
 import axios from 'axios'
 import { AiOutlineLoading } from 'react-icons/ai'
 
+
 export default function InputPart({Done,DataResult,SetDataResult}) {
 
   const [FileText,SetFileText] = useState("")
@@ -42,7 +43,8 @@ export default function InputPart({Done,DataResult,SetDataResult}) {
   }
 
   return (
-    <div className='InputPart_Main_Div'>
+    <div className='InputPart_Main_Div' >
+      <div className='cloumn'>
       <div className='row'>
         <label>Input Your Article</label>
         <input type='file' id='file-upload' onChange={handleFileChange} style={{display:'none'}}/>
@@ -57,6 +59,8 @@ export default function InputPart({Done,DataResult,SetDataResult}) {
         <AiOutlineLoading className='icon'/>
         <label>Generating...</label>
         </div>}
+      </div>
+      
     </div>
   )
 }

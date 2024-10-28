@@ -12,23 +12,20 @@ import os
 import time
 
 # import all functions
-# import func01_summarize as summ
-# import func02_generate_image as image
-# import func03_generate_music as music
-# import func04_generate_voice as voice
-# import func05_generate_final_product as result
+from func01_summarize import paper_text_to_conversation
+import func02_generate_image as image
+import func03_generate_music as music
+import func04_generate_voice as voice
+import func05_generate_final_product as result
 
 from flask import Flask, request, jsonify ,send_from_directory
-from flask_cors import CORS
-
-
-# Global Input - a user-specified document
-file_path = 'THE LOCAL MULTIPLIER IN THE STATE OF OHIO.docx'
-
+from flask_cors import CORS,cross_origin
 
 
 app = Flask(__name__,static_url_path="/AI_end/",static_folder="Media/")
-CORS(app)
+CORS(app, resources={r"/generate": {"origins": "http://localhost:3000"}})  # Allow only example.com
+# app.config['SECRET_KEY'] = 'the quick brown fox jumps over the lazy dog'
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def root():
@@ -46,13 +43,42 @@ def serve_bgmusic(filename):
 def serve_voice(filename):
     return send_from_directory('AI_end/Media/VoiceAudio', filename)
 
+@app.route('/AI_end/Media/Video/<path:filename>')
+def serve_video(filename):
+    return send_from_directory('AI_end/Media/Video', filename)
+
 @app.route('/generate', methods=['POST'])
-
+@cross_origin()
 def main():
-    
-    time.sleep(3)
 
-    return jsonify(Video = "" ,Images = ["http://127.0.0.1:5000/AI_end/Media/Images/generated_image_1.png","http://127.0.0.1:5000/AI_end/Media/Images/generated_image_2.png"] ,Content = ["Peppa Pig and the Secret Ingredient Adventure","Peppa: \"Hello, everyone! Today, we have a fun story about something very interesting. Do you know what tumors are? They're tiny little things that can grow inside our bodies, and they need a special ingredient to grow, just like how our cakes need sugar to be sweet!"] , Voices = ["",""] ,Bgm = "")
+    Content = request.get_json()["Content"]
+
+    SummaryList = []
+
+    chatgpt_api_key_file = "chatgpt_api_key.txt"
+    summary=paper_text_to_conversation(Content,chatgpt_api_key_file)
+
+    bgmUrl = "http://localhost:5000/AI_end/Media/BackgroundMusic/" + music.generate_bgm(summary, dalle_api_key_file)
+
+    dalle_api_key_file = './Api_key/dalle_api_key.txt'
+    images = image.generage_image_dalle(summary, dalle_api_key_file)
+
+    ImageUrlList = result.GetImageUrls()
+    VoiceUrlList = result.GetVoiceUrls()
+
+    # voices = voice.generate_voice(summary)
+
+    for Sentence in summary.values():
+        SummaryList.append(Sentence)
+
+    VideoUrl = result.Combine(SummaryList) or ""
+
+    return jsonify(Video = VideoUrl ,Images = ImageUrlList ,Content = SummaryList , Voices = VoiceUrlList ,Bgm = bgmUrl)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
